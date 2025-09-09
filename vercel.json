@@ -1,10 +1,6 @@
 {
   "version": 2,
-  "name": "gtaw-chatlog-magician",
-  "buildCommand": "echo 'Static site - no build needed'",
-  "outputDirectory": ".",
-  "installCommand": "echo 'No dependencies to install'",
-  "framework": null,
+  "name": "gtawpt-chatlog-magician",
   "headers": [
     {
       "source": "/(.*)",
