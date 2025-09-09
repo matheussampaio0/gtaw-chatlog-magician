@@ -1,0 +1,27 @@
+{
+  "name": "gtaw-chatlog-magician",
+  "version": "1.0.0",
+  "description": "Chatlog Magician for GTA World - Ferramenta para formatação e colorização de chatlogs do GTA RP",
+  "main": "index.html",
+  "scripts": {
+    "start": "npx http-server . -p 3000 -c-1",
+    "build": "echo 'Static site - no build needed'",
+    "dev": "npx http-server . -p 3000 -c-1 -o"
+  },
+  "keywords": [
+    "gta",
+    "roleplay",
+    "chatlog",
+    "formatter",
+    "colorizer",
+    "gtaw"
+  ],
+  "author": "BlancoDagoat",
+  "license": "MIT",
+  "devDependencies": {
+    "http-server": "^14.1.1"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  }
+}

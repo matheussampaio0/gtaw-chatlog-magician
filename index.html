@@ -5,7 +5,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="author" content="asapdev, blanco" />
-  <meta name="description" content="Chatlog Magician for GTA World made by Blanco with love!" />
+  <meta name="description" content="Chatlog Magician for GTA World made by Blanco and edited by prazer!" />
   <meta name="keywords" content="GTAW, GTAWorld, GTA World, RAGE MP, chatlog magician, chatlog" />
   <meta name="theme-color" content="#000000" media="(prefers-color-scheme: light)" />
   <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)" />
@@ -66,45 +66,53 @@
     <div class="grid-container">
         <div class="grid-x grid-margin-x">
            <div class="cell small-12">
-              <div class="grid-x grid-margin-x align-middle">
-                 <div class="cell small-4 medium-2">
-                    <label for="font-label">Font Size:</label>
-                    <input name="font-label" id="font-label" type="number" min="1" value="12" aria-label="Font size" />
-                 </div>
-                 <div class="cell small-4 medium-2">
-                    <label for="lineLengthInput">Line Length:</label>
-                    <input type="number" id="lineLengthInput" min="1" value="77" aria-label="Line length">
-                 </div>
-                 <div class="cell small-8 medium-8">
-                    <label for="characterNameInput">Character Name Filter:</label>
-                    <div class="input-group" style="position: relative;">
-                      <input type="text" id="characterNameInput" placeholder="Enter character name" autocomplete="off" aria-label="Character name filter" />
+                 <div class="controls-section">
+                   <div class="grid-x grid-margin-x align-middle controls-grid">
+                       <div class="cell small-6 medium-3 large-2">
+                         <div class="input-control">
+                           <label for="font-label" class="input-label">Tam. da Fonte <span class="unit">(px)</span></label>
+                           <input name="font-label" id="font-label" type="number" min="1" value="12" aria-label="Tamanho da fonte" class="input-field" />
+                         </div>
+                       </div>
+                     <div class="cell small-6 medium-3 large-2">
+                       <div class="input-control">
+                           <label for="lineLengthInput" class="input-label">Tam. da Frase <span class="unit">(ch)</span></label>
+                         <input type="number" id="lineLengthInput" min="1" value="77" aria-label="Comprimento da linha" class="input-field">
+                       </div>
+                     </div>
+                     <div class="cell small-12 medium-6 large-8">
+                       <div class="input-control" style="position: relative;">
+                         <label for="characterNameInput" class="input-label">Filtro de Personagem</label>
+                         <div class="input-group">
+                      <input type="text" id="characterNameInput" placeholder="Digite o nome do personagem" autocomplete="off" aria-label="Filtro por nome do personagem" />
                       <div class="input-group-button" style="display: flex; gap: 4px;">
-                        <button class="button small" id="addCharacterBtn" type="button" aria-label="Add character">Add</button>
-                        <button class="button small" id="showCharacterListBtn" type="button" aria-label="Show character list">&#9660;</button>
+                        <button class="button" id="addCharacterBtn" aria-label="Adicionar personagem">Adicionar</button>
+                        <button class="button" id="showCharacterListBtn" aria-label="Mostrar lista de personagens">&#9660;</button>
                       </div>
-                      <div id="characterNameDropdown" class="character-dropdown" style="display: none; position: absolute; top: 110%; left: 0; right: 0; background: #222; color: #fff; border: 1px solid #444; z-index: 1000; max-height: 150px; overflow-y: auto;" role="listbox"></div>
-                    </div>
-                 </div>
-              </div>
-              <label for="chatlogInput">Chat Log:</label>
-              <div class="textarea-container">
-                 <textarea id="chatlogInput" class="form-control textarea-input" rows="15" placeholder="Enter your chat log here..." aria-label="Chat log input"></textarea>
-              </div>
-              <div class="grid-x grid-margin-x align-middle">
-                 <div class="cell auto">
-                    <button id="downloadOutputTransparent" class="button success" aria-label="Download chat log">Download</button>
-                    <button id="toggleBackground" class="button">Toggle Background</button>
-                    <button id="toggleOutputFont" class="button" aria-label="Toggle output font" title="Switch output font between Default and Trebuchet MS">Font: Default</button>
-                    <button id="toggleCharacterNameColoring" class="button" aria-label="Toggle character name coloring" title="Disable character name detection coloring">Name Colors</button>
-                    <button id="censorCharButton" class="button secondary censor-char-button" aria-label="Copy censor character" title="Copy ÷ character">÷</button>
-                    <button id="toggleColorPalette" class="button" aria-label="Toggle color palette" title="Click text to color">Color Text</button>
-                    <div class="button" style="display: inline-flex; align-items: center; padding: 0.5em 1em; height: 38px;">
-                     <script type="text/javascript" src="https://cdnjs.buymeacoffee.com/1.0.0/button.prod.min.js" data-name="bmc-button" data-slug="blancodagoat" data-color="#000000" data-emoji="" data-font="Cookie" data-text="Buy me a pizza" data-outline-color="#ffffff" data-font-color="#ffffff" data-coffee-color="#FFDD00" data-size="small"></script>
+                         </div>
+                         <div id="characterNameDropdown" class="character-dropdown" style="display: none;" role="listbox"></div>
+                       </div>
                    </div>
                  </div>
-              </div>
-              <div id="output" class="output" role="region" aria-label="Formatted chat log output"></div>
+               </div>
+               
+                 <div class="chatlog-section">
+                   <div class="textarea-container">
+                   <textarea id="chatlogInput" class="form-control textarea-input" rows="15" placeholder="Cole seu chatlog aqui..." aria-label="Entrada do chatlog"></textarea>
+                 </div>
+               </div>
+               
+               <div class="actions-section">
+                 <div class="actions-grid">
+                    <button id="downloadOutputTransparent" class="button success" aria-label="Baixar chatlog">Baixar</button>
+                    <button id="toggleBackground" class="button">Alternar Fundo</button>
+                    <button id="toggleOutputFont" class="button" aria-label="Alternar fonte" title="Alternar fonte entre Padrão e Trebuchet MS">Fonte: Padrão</button>
+                    <button id="toggleCharacterNameColoring" class="button" aria-label="Alternar cores dos nomes" title="Desabilitar coloração automática dos nomes">Cores dos Nomes</button>
+                    <button id="censorCharButton" class="button secondary censor-char-button" aria-label="Copiar caractere de censura" title="Copiar caractere ÷">÷</button>
+                    <button id="toggleColorPalette" class="button" aria-label="Alternar paleta de cores" title="Clique no texto para colorir">Colorir Texto</button>
+                 </div>
+               </div>
+              <div id="output" class="output" role="region" aria-label="Saída do chatlog formatado"></div>
            </div>
         </div>
      </div>
@@ -127,7 +135,7 @@
           onclick="toggleHistoryPanel()" 
           role="button" 
           tabindex="0" 
-          aria-label="Open chat history" 
+          aria-label="Abrir histórico de chatlogs" 
           aria-expanded="false">
        <i class="fas fa-clock-rotate-left" aria-hidden="true"></i>
      </div>
@@ -135,62 +143,41 @@
      <div id="historyPanel" 
           class="history-panel" 
           role="dialog" 
-          aria-label="Chat history" 
+          aria-label="Histórico de chatlogs" 
           aria-hidden="true">
        <div class="history-header">
-         <h3>Chatlog History</h3>
+         <h3>Histórico de Chatlogs</h3>
        </div>
        <div class="history-items" role="list"></div>
      </div>
 
      <!-- Color Palette -->
      <div id="colorPalette" class="color-palette" style="display: none;">
-         <div class="color-palette-header">
-             Select Color
-             <div class="selection-counter">0 selected</div>
-         </div>
+        <div class="color-palette-header">
+            Selecionar Cor
+            <div class="selection-counter">0 selecionado</div>
+        </div>
          <div class="color-palette-items">
-             <div class="color-item me" data-color="me" data-tooltip="Me/Ame Actions"></div>
-             <div class="color-item ame" data-color="ame" data-tooltip="Me/Ame Actions"></div>
-             <div class="color-item darkgrey" data-color="darkgrey" data-tooltip="Lower Voice"></div>
-             <div class="color-item grey" data-color="grey" data-tooltip="Low Voice"></div>
-             <div class="color-item lightgrey" data-color="lightgrey" data-tooltip="Normal Text"></div>
-             <div class="color-item death" data-color="death" data-tooltip="Death/Failures"></div>
-             <div class="color-item yellow" data-color="yellow" data-tooltip="Important Info"></div>
-             <div class="color-item green" data-color="green" data-tooltip="Success"></div>
-             <div class="color-item orange" data-color="orange" data-tooltip="Warnings"></div>
-             <div class="color-item blue" data-color="blue" data-tooltip="Info"></div>
-             <div class="color-item white" data-color="white" data-tooltip="Normal Text"></div>
-             <div class="color-item radioColor" data-color="radioColor" data-tooltip="Radio (Your Channel)"></div>
-             <div class="color-item radioColor2" data-color="radioColor2" data-tooltip="Radio (Other Channel)"></div>
-             <div class="color-item depColor" data-color="depColor" data-tooltip="Department"></div>
-             <div class="color-item vesseltraffic" data-color="vesseltraffic" data-tooltip="Vessel Traffic"></div>
-             <div class="color-item toyou" data-color="toyou" data-tooltip="Directed at You [!]"></div>
+            <div class="color-item me" data-color="me" data-tooltip="Ações /me"></div>
+            <div class="color-item ame" data-color="ame" data-tooltip="Ações /ame"></div>
+            <div class="color-item darkgrey" data-color="darkgrey" data-tooltip="Voz Baixa"></div>
+            <div class="color-item grey" data-color="grey" data-tooltip="Sussurro"></div>
+            <div class="color-item lightgrey" data-color="lightgrey" data-tooltip="Texto Normal"></div>
+            <div class="color-item death" data-color="death" data-tooltip="Morte/Falhas"></div>
+            <div class="color-item yellow" data-color="yellow" data-tooltip="Informação Importante"></div>
+            <div class="color-item green" data-color="green" data-tooltip="Sucesso"></div>
+            <div class="color-item orange" data-color="orange" data-tooltip="Avisos"></div>
+            <div class="color-item blue" data-color="blue" data-tooltip="Informação"></div>
+            <div class="color-item white" data-color="white" data-tooltip="Texto Normal"></div>
+            <div class="color-item radioColor" data-color="radioColor" data-tooltip="Rádio (Seu Canal)"></div>
+            <div class="color-item radioColor2" data-color="radioColor2" data-tooltip="Rádio (Outro Canal)"></div>
+            <div class="color-item depColor" data-color="depColor" data-tooltip="Departamento"></div>
+            <div class="color-item vesseltraffic" data-color="vesseltraffic" data-tooltip="Tráfego Marítimo"></div>
+            <div class="color-item toyou" data-color="toyou" data-tooltip="Direcionado a Você [!]"></div>
          </div>
      </div>
 
-     <!-- Changelog tab -->
-     <div class="changelog-tab" 
-          role="button" 
-          tabindex="0" 
-          aria-label="Open changelog" 
-          aria-expanded="false">
-       <i class="fas fa-list" aria-hidden="true"></i>
-     </div>
 
-     <div id="changelogPanel" 
-          class="changelog-panel" 
-          role="dialog" 
-          aria-label="Changelog" 
-          aria-hidden="true">
-       <div class="changelog-header">
-         <h3>Latest Updates</h3>
-       </div>
-       <div class="changelog-items" role="list"></div>
-     </div>
-
-     <script src="js/changelog-data.js" defer></script>
-     <script src="js/changelog.js" defer></script>
 
      <script>
         document.addEventListener('DOMContentLoaded', function() {

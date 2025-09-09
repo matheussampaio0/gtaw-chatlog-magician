@@ -110,7 +110,7 @@
             document.body.style.msUserSelect = 'none';
 
             // Replace blocking alert with non-blocking toast
-            showToast("Coloring mode: Click words to select. Ctrl+click or drag for multi-select. Click the button again to exit.");
+            showToast("Após inserir o chatlog clique nas palavras para selecionalas e então clique no botão da cor desejada. <br><br> Você pode selecionar múltiplas palavras clicando com o ctrl pressionado.", "info");
 
             setTimeout(function() {
                 makeTextColorable();
@@ -142,14 +142,28 @@
         }
     }
 
-    function showToast(message) {
+    function showToast(message, type = 'info') {
+        // Remove existing toast
         const existing = document.querySelector('.color-applied-feedback');
-        if (existing) existing.remove();
-        const toast = $(`<div class="color-applied-feedback">${message}</div>`);
+        if (existing) {
+            existing.classList.add('hide');
+            setTimeout(() => existing.remove(), 300);
+        }
+        
+        // Create new toast
+        const toast = $(`<div class="color-applied-feedback ${type}">${message}</div>`);
         $('body').append(toast);
+        
+        // Trigger animation
         setTimeout(() => {
-            toast.fadeOut(300, function() { $(this).remove(); });
-        }, 1500);
+            toast.addClass('show');
+        }, 10);
+        
+        // Auto-hide after 3 seconds
+        setTimeout(() => {
+            toast.removeClass('show').addClass('hide');
+            setTimeout(() => toast.remove(), 300);
+        }, 3000);
     }
 
     function setupClosePaletteHandler() {
@@ -337,16 +351,8 @@
         // Remove existing feedback
         $('.color-applied-feedback').remove();
         
-        // Create feedback element
-        const feedback = $(`<div class="color-applied-feedback">Applied ${colorClass}</div>`);
-        $('body').append(feedback);
-        
-        // Remove after 1 second
-        setTimeout(() => {
-            feedback.fadeOut(300, function() {
-                $(this).remove();
-            });
-        }, 1000);
+        // Show success feedback
+        showToast(`Cor aplicada: ${colorClass}`, "success");
     }
 
     function updateColorPalettePosition() {

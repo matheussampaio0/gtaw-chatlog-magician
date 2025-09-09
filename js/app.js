@@ -157,8 +157,8 @@ function downloadOutputImage() {
 
   // Try with original output first
   if (typeof domtoimage === 'undefined') {
-    console.error('domtoimage library not loaded');
-    alert('Image generation library not available. Please refresh the page and try again.');
+    console.error('Biblioteca domtoimage não carregada');
+    alert('Biblioteca de geração de imagem não disponível. Atualize a página e tente novamente.');
     hideLoadingIndicator();
     if (hadColoringMode) output.addClass('coloring-mode');
     return;
@@ -168,14 +168,14 @@ function downloadOutputImage() {
     output.css('padding-bottom', originalPadding);
     processGeneratedBlob(blob);
   }).catch(function(error) {
-    console.error("Error generating image with original output:", error);
+    console.error("Erro ao gerar imagem com saída original:", error);
     
     // If CORS issues persist, try with a clean version
     if (error.message && (error.message.includes('SecurityError') || 
                           error.message.includes('cssRules') || 
                           error.message.includes('Cannot access rules'))) {
       
-      console.log("Attempting fallback with clean output...");
+      console.log("Tentando fallback com saída limpa...");
       
       // Create a clean version without external resources
       const cleanOutput = window.CORSHandler ? 
@@ -192,8 +192,8 @@ function downloadOutputImage() {
       });
       
       if (typeof domtoimage === 'undefined') {
-        console.error('domtoimage library not loaded');
-        alert('Image generation library not available. Please refresh the page and try again.');
+        console.error('Biblioteca domtoimage não carregada');
+        alert('Biblioteca de geração de imagem não disponível. Atualize a página e tente novamente.');
         hideLoadingIndicator();
         if (hadColoringMode) output.addClass('coloring-mode');
         return;
@@ -203,7 +203,7 @@ function downloadOutputImage() {
         output.css('padding-bottom', originalPadding);
         processGeneratedBlob(blob);
       }).catch(function(fallbackError) {
-        console.error("Fallback also failed:", fallbackError);
+        console.error("Fallback também falhou:", fallbackError);
         handleImageGenerationError(error);
       });
     } else {
@@ -234,23 +234,23 @@ function downloadOutputImage() {
     };
 
     img.onerror = function() {
-      console.error("Error loading generated image");
-      alert("There was an error processing the generated image. Please try again.");
+      console.error("Erro ao carregar imagem gerada");
+      alert("Houve um erro ao processar a imagem gerada. Tente novamente.");
       hideLoadingIndicator();
       if (hadColoringMode) output.addClass('coloring-mode');
     };
   }
 
   function handleImageGenerationError(error) {
-    console.error("Error generating image:", error);
+    console.error("Erro ao gerar imagem:", error);
     
-    // Provide more specific error messages
-    let errorMessage = "There was an error generating the image. Please try again.";
+    // Fornecer mensagens de erro mais específicas
+    let errorMessage = "Houve um erro ao gerar a imagem. Tente novamente.";
     
     if (error.message && error.message.includes('SecurityError')) {
-      errorMessage = "Unable to access external resources. The image may be generated without some styling.";
+      errorMessage = "Não foi possível acessar recursos externos. A imagem pode ser gerada sem alguns estilos.";
     } else if (error.message && error.message.includes('cssRules')) {
-      errorMessage = "Some external styles could not be loaded. The image will be generated with available styles.";
+      errorMessage = "Alguns estilos externos não puderam ser carregados. A imagem será gerada com os estilos disponíveis.";
     }
     
     alert(errorMessage);
@@ -285,7 +285,7 @@ function showAutoSaveIndicator() {
   $('.auto-save-indicator').remove();
   
   // Create and show new indicator
-  const indicator = $('<div class="auto-save-indicator">Settings saved</div>');
+  const indicator = $('<div class="auto-save-indicator">Configurações salvas</div>');
   $('body').append(indicator);
   
   // Remove after 2 seconds
@@ -327,7 +327,7 @@ function copyToClipboard(text, button) {
         showCopySuccess(button);
       })
       .catch(err => {
-        console.log('Clipboard API failed, trying fallback', err);
+        console.log('API de clipboard falhou, tentando fallback', err);
         copyUsingFallback(text, button);
       });
   } else {
@@ -359,7 +359,7 @@ function copyUsingFallback(text, button) {
       showCopyError(button);
     }
   } catch (err) {
-    console.error('Fallback copy failed:', err);
+    console.error('Cópia de fallback falhou:', err);
     showCopyError(button);
   }
 }
@@ -470,7 +470,7 @@ function toggleHistoryPanel() {
 
   const tab = document.querySelector('.history-tab');
   tab.setAttribute('aria-expanded', !isOpen);
-  tab.setAttribute('aria-label', isOpen ? 'Open chat history' : 'Close chat history');
+    tab.setAttribute('aria-label', isOpen ? 'Abrir histórico de chatlogs' : 'Fechar histórico de chatlogs');
 
   // Hide/show the history tab when panel is open/closed
   if (!isOpen) {
@@ -505,7 +505,7 @@ document.addEventListener('click', (e) => {
 });
 
 function clearHistory() {
-  if (confirm('Are you sure you want to clear all chat history?')) {
+  if (confirm('Tem certeza de que deseja limpar todo o histórico de chatlogs?')) {
     localStorage.removeItem('chatlogHistory');
     refreshHistoryPanel();
   }
@@ -513,8 +513,8 @@ function clearHistory() {
 
 function refreshHistoryPanel() {
   const $historyItems = $('.history-items');
-  const $loading = $('<div class="history-loading">Loading history...</div>');
-  const $empty = $('<div class="history-empty">No history items</div>');
+      const $loading = $('<div class="history-loading">Carregando histórico...</div>');
+  const $empty = $('<div class="history-empty">Nenhum item no histórico</div>');
 
   $historyItems.empty().append($loading.addClass('active'));
 
@@ -528,7 +528,7 @@ function refreshHistoryPanel() {
     }
 
     const $items = history.map((text, index) => {
-      const $item = $('<div class="history-item" role="button" tabindex="0" aria-label="Load chatlog from history"></div>');
+      const $item = $('<div class="history-item" role="button" tabindex="0" aria-label="Carregar chatlog do histórico"></div>');
       $item.data('index', index);
 
       const $textContainer = $('<div class="history-item-text"></div>');
@@ -554,7 +554,7 @@ function refreshHistoryPanel() {
   } catch (e) {
     console.error('Error refreshing history panel:', e);
     $loading.removeClass('active');
-    $historyItems.append($('<div class="history-error">Error loading history</div>'));
+    $historyItems.append($('<div class="history-error">Erro ao carregar histórico</div>'));
   }
 }
 
@@ -567,22 +567,6 @@ function escapeHtml(unsafe) {
     .replace(/'/g, "&#039;");
 }
 
-function toggleChangelogPanel() {
-    const panel = document.getElementById('changelogPanel');
-    const isOpen = panel.classList.contains('open');
-
-    panel.classList.toggle('open');
-    panel.setAttribute('aria-hidden', !isOpen);
-
-    const tab = document.querySelector('.changelog-tab');
-    tab.setAttribute('aria-expanded', !isOpen);
-    tab.setAttribute('aria-label', isOpen ? 'Open changelog' : 'Close changelog');
-
-    if (!isOpen) {
-        const firstItem = panel.querySelector('.changelog-item');
-        if (firstItem) firstItem.focus();
-    }
-}
 
 $(document).ready(function() {
 
@@ -596,7 +580,7 @@ $(document).ready(function() {
     const dropdown = $('#characterNameDropdown');
     const list = getCharacterList();
     if (list.length === 0) {
-      dropdown.html('<div style="padding: 8px; color: #888;">No characters saved</div>');
+      dropdown.html('<div style="padding: 8px; color: #888;">Nenhum personagem salvo</div>');
       return;
     }
     dropdown.html(list.map(name =>
@@ -619,20 +603,27 @@ $(document).ready(function() {
     $('#characterNameInput').val('');
   });
 
-  $('#showCharacterListBtn').on('click', function(e) {
+  // Event listener para o botão de mostrar lista de personagens
+  document.getElementById('showCharacterListBtn').addEventListener('click', function(e) {
+    e.preventDefault();
     e.stopPropagation();
-    const dropdown = $('#characterNameDropdown');
-    if (dropdown.is(':visible')) {
-      dropdown.hide();
-    } else {
+    
+    const dropdown = document.getElementById('characterNameDropdown');
+    
+    // Verificar se está visível usando computed style
+    const isVisible = window.getComputedStyle(dropdown).display !== 'none';
+    
+    if (!isVisible) {
       renderCharacterDropdown();
-      dropdown.show();
+      dropdown.style.display = 'block';
+    } else {
+      dropdown.style.display = 'none';
     }
   });
 
   $(document).on('click', '.character-name-select', function() {
     const name = $(this).text();
-    $('#characterNameInput').val(name);
+    $('#characterNameInput').val(name).trigger('input');
     $('#characterNameDropdown').hide();
     localStorage.setItem('chatlogCharacterName', name);
     if (typeof applyFilter === 'function') applyFilter();
@@ -646,15 +637,20 @@ $(document).ready(function() {
     renderCharacterDropdown();
   });
 
-  $(document).on('click', function(e) {
-    if (!$(e.target).closest('.input-group').length) {
-      $('#characterNameDropdown').hide();
+  // Fechar dropdown ao clicar fora
+  document.addEventListener('click', function(e) {
+    const dropdown = document.getElementById('characterNameDropdown');
+    const inputGroup = document.querySelector('.input-group');
+    
+    if (!inputGroup.contains(e.target) && !dropdown.contains(e.target)) {
+      dropdown.style.display = 'none';
     }
   });
 
-  $('#characterNameInput').on('keydown', function(e) {
+  // Fechar dropdown com tecla Escape
+  document.getElementById('characterNameInput').addEventListener('keydown', function(e) {
     if (e.key === 'Escape') {
-      $('#characterNameDropdown').hide();
+      document.getElementById('characterNameDropdown').style.display = 'none';
     }
   });
 
@@ -762,27 +758,15 @@ $(document).ready(function() {
   });
 
   $('.history-header').append(
-    $('<button class="clear-history-btn" onclick="clearHistory()" aria-label="Clear all history">Clear All</button>')
+    $('<button class="clear-history-btn" onclick="clearHistory()" aria-label="Limpar todo o histórico">Limpar Tudo</button>')
   );
 
-  // Add click-away functionality for changelog panel
-  $(document).on('click', function(e) {
-    const panel = document.getElementById('changelogPanel');
-    const tab = document.querySelector('.changelog-tab');
-    
-    if (!$(e.target).closest('#changelogPanel, .changelog-tab').length && panel.classList.contains('open')) {
-      panel.classList.remove('open');
-      panel.setAttribute('aria-hidden', 'true');
-      tab.setAttribute('aria-expanded', 'false');
-      tab.setAttribute('aria-label', 'Open changelog');
-    }
-  });
 
   // Toggle output font between default and Trebuchet MS
   $('#toggleOutputFont').on('click', function() {
     const $out = $('#output');
     const isTrebuchet = $out.toggleClass('output-font-trebuchet').hasClass('output-font-trebuchet');
-    $(this).text('Font: ' + (isTrebuchet ? 'Trebuchet MS' : 'Default'));
+    $(this).text('Fonte: ' + (isTrebuchet ? 'Trebuchet MS' : 'Padrão'));
     try {
       localStorage.setItem('outputFontTrebuchet', isTrebuchet ? '1' : '0');
     } catch (e) {}
@@ -793,7 +777,7 @@ $(document).ready(function() {
     const saved = localStorage.getItem('outputFontTrebuchet');
     if (saved === '1') {
       $('#output').addClass('output-font-trebuchet');
-      $('#toggleOutputFont').text('Font: Trebuchet MS');
+      $('#toggleOutputFont').text('Fonte: Trebuchet MS');
     }
   } catch (e) {}
 

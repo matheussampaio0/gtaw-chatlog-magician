@@ -4,7 +4,8 @@ body {
     background: var(--bg);
     margin: 0;
     color: var(--text);
-    background-image: none;
+    background-image: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 50%, #1a1a1a 100%);
+    background-attachment: fixed;
     min-height: 100vh;
 }
 
@@ -1170,4 +1171,339 @@ html::-webkit-scrollbar {
 	.changelog-content {
 		font-size: 12px;
 	}
+}
+
+/* ===== VISUAL IMPROVEMENTS ===== */
+
+/* Section titles and organization */
+.controls-section,
+.chatlog-section,
+.actions-section {
+  margin-bottom: 2rem;
+}
+
+.section-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #ffffff;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid #444;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+/* Input controls styling */
+.input-control {
+  margin-bottom: 1rem;
+}
+
+.input-label {
+  display: block;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #e0e0e0;
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.input-label .unit {
+  color: #666;
+  font-weight: 300;
+  font-size: 0.8rem;
+  opacity: 0.7;
+  text-transform: none;
+  letter-spacing: 0;
+}
+
+
+.input-field {
+  width: 100%;
+  padding: 0.75rem;
+  background: #2a2a2a;
+  border: 2px solid #444;
+  border-radius: 6px;
+  color: #ffffff;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.input-field:focus {
+  outline: none;
+  border-color: #007bff;
+  background: #333;
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.1);
+}
+
+.input-field:hover {
+  border-color: #555;
+}
+
+/* Controls grid improvements */
+.controls-grid {
+  gap: 1rem;
+  align-items: end;
+}
+
+.controls-grid .cell {
+  display: flex;
+  flex-direction: column;
+}
+
+.controls-grid .input-control {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+@media (max-width: 768px) {
+  .controls-grid .cell {
+    margin-bottom: 1rem;
+  }
+  
+  .section-title {
+    font-size: 1.25rem;
+  }
+  
+  .controls-grid {
+    align-items: stretch;
+  }
+}
+
+/* Actions grid styling */
+.actions-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  align-items: center;
+}
+
+@media (max-width: 768px) {
+  .actions-grid {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .actions-grid .button {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+/* Button improvements */
+.button {
+  border-radius: 6px !important;
+  font-weight: 500;
+  text-transform: none;
+  transition: all 0.3s ease;
+  border: none;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.button.success {
+  background: linear-gradient(135deg, #28a745, #20c997) !important;
+}
+
+.button.success:hover {
+  background: linear-gradient(135deg, #218838, #1ba085) !important;
+}
+
+.button.secondary {
+  background: linear-gradient(135deg, #6c757d, #5a6268) !important;
+}
+
+.button.secondary:hover {
+  background: linear-gradient(135deg, #5a6268, #495057) !important;
+}
+
+/* Textarea improvements */
+.textarea-container {
+  position: relative;
+}
+
+.textarea-input {
+  width: 100%;
+  min-height: 200px;
+  padding: 1rem;
+  background: #2a2a2a;
+  border: 2px solid #444;
+  border-radius: 8px;
+  color: #ffffff;
+  font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+  font-size: 0.95rem;
+  line-height: 1.4;
+  resize: vertical;
+  transition: all 0.3s ease;
+}
+
+.textarea-input:focus {
+  outline: none;
+  border-color: #007bff;
+  background: #333;
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.1);
+}
+
+.textarea-input::placeholder {
+  color: #888;
+  font-style: italic;
+}
+
+/* Character dropdown - versão original simples */
+.character-dropdown {
+  border-radius: 6px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  position: absolute !important;
+  top: 100% !important;
+  left: 0 !important;
+  right: 0 !important;
+  background: #222 !important;
+  color: #fff !important;
+  border: 1px solid #444 !important;
+  z-index: 1000 !important;
+  max-height: 150px !important;
+  overflow-y: auto !important;
+  width: 100% !important;
+  margin-top: 1px !important;
+}
+
+.character-dropdown-item {
+  padding: 8px 12px;
+  border-bottom: 1px solid #333;
+}
+
+.character-dropdown-item:last-child {
+  border-bottom: none;
+}
+
+.character-dropdown-item:hover {
+  background: #333 !important;
+}
+
+/* Garantir que o botão seja clicável */
+#showCharacterListBtn {
+  cursor: pointer !important;
+  pointer-events: auto !important;
+  z-index: 10 !important;
+  position: relative !important;
+}
+
+/* Input group - versão original simples */
+.input-group {
+  display: flex;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.input-group input {
+  border-radius: 0;
+  border-right: none;
+}
+
+.input-group-button {
+  display: flex;
+}
+
+.input-group-button .button {
+  border-radius: 0;
+  margin: 0;
+}
+
+.input-group-button .button:last-child {
+  border-top-right-radius: 6px;
+  border-bottom-right-radius: 6px;
+}
+
+/* Remove changelog styles since we removed the button */
+.changelog-tab,
+.changelog-panel {
+  display: none !important;
+}
+
+/* ===== TOAST/HELPER IMPROVEMENTS ===== */
+
+.color-applied-feedback {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: linear-gradient(135deg, #2c3e50, #34495e);
+  color: #ffffff;
+  padding: 12px 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  z-index: 10000;
+  font-size: 0.9rem;
+  font-weight: 500;
+  max-width: 300px;
+  line-height: 1.4;
+  border-left: 4px solid #3498db;
+  animation: slideInRight 0.3s ease-out;
+  opacity: 0;
+  transform: translateX(100%);
+}
+
+.color-applied-feedback.show {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideOutRight {
+  from {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+}
+
+.color-applied-feedback.hide {
+  animation: slideOutRight 0.3s ease-in forwards;
+}
+
+/* Toast for different message types */
+.color-applied-feedback.info {
+  border-left-color: #3498db;
+  background: linear-gradient(135deg, #2c3e50, #34495e);
+}
+
+.color-applied-feedback.success {
+  border-left-color: #27ae60;
+  background: linear-gradient(135deg, #27ae60, #2ecc71);
+}
+
+.color-applied-feedback.warning {
+  border-left-color: #f39c12;
+  background: linear-gradient(135deg, #e67e22, #f39c12);
+}
+
+/* Mobile responsiveness for toast */
+@media (max-width: 768px) {
+  .color-applied-feedback {
+    top: 10px;
+    right: 10px;
+    left: 10px;
+    max-width: none;
+    font-size: 0.85rem;
+    padding: 10px 16px;
+  }
 }
