@@ -1,4 +1,5 @@
 {
   "version": 2,
-  "name": "gtawpt-chatlog-magician"
+  "name": "gtawpt-chatlog-magician",
+  "outputDirectory": "public"
 }
