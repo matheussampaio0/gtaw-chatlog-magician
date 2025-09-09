@@ -1,12 +1,10 @@
 {
   "version": 2,
   "name": "gtaw-chatlog-magician",
-  "builds": [
-    {
-      "src": "index.html",
-      "use": "@vercel/static"
-    }
-  ],
+  "buildCommand": "echo 'Static site - no build needed'",
+  "outputDirectory": ".",
+  "installCommand": "echo 'No dependencies to install'",
+  "framework": null,
   "headers": [
     {
       "source": "/(.*)",
